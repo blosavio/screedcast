@@ -10,13 +10,36 @@
    [hiccup.element :as element]
    [hiccup.form :as form]
    [hiccup.util :as util]
-   [readmoi.core :refer :all]))
+   [readmoi.core :refer :all :exlude [*separator*-docstring
+                                      *separator*
+                                      *wrap-at*-docstring
+                                      *wrap-at*]]))
+
+
+(def ^{:no-doc true} *wrap-at*-docstring
+  "Base-case column wrap, override-able by supplying extra args to the function
+ that would otherwise consult this value, e.g., [[prettyfy-form-prettyfy-eval]].
+ Default `80`.")
+
+
+(def ^{:no-doc true} *separator*-docstring
+  "Characters that separate the string representation of the form to be
+ evaluated and the string representation of the result. Default ` => `.")
+
+
+(def ^{:dynamic true
+       :doc *wrap-at*-docstring} *wrap-at* 80)
+
+
+(def ^{:dynamic true
+       :doc *separator*-docstring} *separator* " => ")
 
 
 (defn page-ize
   "Given hiccup/html form `body`, insert a page number into the panel-footer of
   each panel."
-  {:UUIDv4 #uuid "c30b6a0b-3092-4e84-a7a5-7fd07ab248b1"}
+  {:UUIDv4 #uuid "c30b6a0b-3092-4e84-a7a5-7fd07ab248b1"
+   :no-doc true}
   [body opt]
   (let [total (dec (count body))]
     (concat
@@ -31,7 +54,8 @@
 (defn screencast-template
   "Generate a screencast with header title `t`, hiccup/html dialect `body`,
   UUIDv4 `uuid`, and options map `opt`."
-  {:UUIDv4 #uuid "9eac9c34-c44c-4921-97f3-4418b37e15c9"}
+  {:UUIDv4 #uuid "9eac9c34-c44c-4921-97f3-4418b37e15c9"
+   :no-doc true}
   [title uuid body opt]
   (page/html5
    {:lang "en"}
@@ -55,22 +79,38 @@
 
 
 (defn prettyfy-form-prettyfy-eval
-  "Returns a hiccup [:pre [:code]] block wrapping a Clojure stringified form
-  str-form, then a [:pre [:code]] block wrapping a separator sep
-  (default ' => '), and evaluated value.
+  "Returns a hiccup `[:pre [:code]]` block wrapping a Clojure stringified form
+  `str-form`, then a `[:pre [:code]]` block wrapping a separator `sep`
+  (default `' => '`), and evaluated value.
 
   `def`, `defn`, `s/def/`, `defmacro`, `defpred`, and `require` expressions are
   only evaled; their output is not captured.
 
+  Example:
+  ```clojure
+  (prettyfy-form-prettyfy-eval \"(inc 99)\")
+  ```
+  
+  produces this hiccup/html
+
+  ```clojure
+  [:pre [:code.form \"(inc 99)\"] [:br] [:code.eval \";; => 100\"]]
+  ```
+
+  The compiled html elements are manipulated by javascript.
+
+  Re-bind [[*wrap-at*]] to change base-case column-wrap width. The two optional
+  width args, `width-fn` and `width-output`, supersede this value.
+
+  Re-bind [[*separator*]] to change the evaluation arrow.
+
   Note: Evaluated output can not contain an anonymous function of either
-  (fn [x] ...) nor #(...) because zprint requires an internal reference
+  `(fn [x] ...)` nor `#(...)` because zprint requires an internal reference
   to attempt a backtrack. Since the rendering of an anonymous function
   changes from one invocation to the next, there is no stable reference."
   {:UUIDv4 #uuid "0d6c7ba9-a9a5-4980-b449-ea1b27230d47"}
-  ([str-form] (prettyfy-form-prettyfy-eval str-form " => " 80 40))
-  ([str-form separator] (prettyfy-form-prettyfy-eval str-form separator 80 40))
-  ([str-form width-fn width-output] (prettyfy-form-prettyfy-eval str-form " => " width-fn width-output))
-  ([str-form separator width-fn width-output]
+  ([str-form] (prettyfy-form-prettyfy-eval str-form *wrap-at* (/ *wrap-at* 2)))
+  ([str-form width-fn width-output]
    (let [def? (re-find #"^\((s\/)?defn?(macro)?(pred)? " str-form)
          require? (re-find #"^\(require " str-form)
          form (read-string str-form)
@@ -82,12 +122,13 @@
         [:code.form (prettyfy str-form width-fn)]
         [:br]
         [:code.eval (comment-newlines (prettyfy evaled-str width-output)
-                                      separator
+                                      *separator*
                                       ";;")]]))))
 
 
 (defn panel
-  "Generate a screencast panel, with zero or more hiccup forms."
+  "Generate a screencast panel, with zero or more hiccup forms, including a
+  header and a footer."
   {:UUIDv4 #uuid "1ba78b65-4568-4517-9d98-5b21fc39e0f8"}
   [& hiccups]
   (conj
@@ -112,7 +153,7 @@
 
 
 (defn whats-next-panel
-  "Generate a `what's next` panel, with the next `idx` screencast highlighted,
+  "Generate a 'What's next' panel, with the next `idx` screencast highlighted,
   optional presentation `notes` to be appended."
   {:UUIDv4 #uuid "6ab9ae17-8942-4bc4-ae4e-7c520f243929"}
   [idx & notes]
@@ -125,7 +166,8 @@
 (defn generate-screencast
   "Given file-name base entry `fnbe` and screedcast options map `opt`, generate
   an html screencast page."
-  {:UUIDv4 #uuid "b07a9fbd-0ad1-4ae3-96a9-01937ab053e6"}
+  {:UUIDv4 #uuid "b07a9fbd-0ad1-4ae3-96a9-01937ab053e6"
+   :no-doc true}
   [fnbe opt]
   (let [title (str (opt :project-name-formatted) " — " (opt :project-description))
         screencast-body (screencast-template
@@ -142,12 +184,17 @@
 
 
 (defn generate-all-screencasts
-  "Given an options map `opt`, generate a screencast html doc for all filenames."
+  "Given an _options_ map `opt`, generate a screencast html doc for all maps
+  contained by the vector associated to `:screencast-filename-bases`.
+
+  See [project documenation](https://github.com/blosavio/screedcast) for details
+  of the options map."
   {:UUIDv4 #uuid "d856e482-bf0e-4ad6-8056-095f49c84f42"}
   [opt]
-  (let [options-n-defaults (merge screedcast-defaults opt)
-        _ (reset! screencast-topics (mapv #(:screencast-title %) (opt :screencast-filename-bases)))
-        _ (reset! project-name (opt :project-name-formatted))]
-    (binding [readmoi.core/*wrap-at* (options-n-defaults :wrap-at)
-              readmoi.core/*separator* (options-n-defaults :separator)]
-      (map #(generate-screencast % options-n-defaults) (opt :screencast-filename-bases)))))
+  (let [options-n-defaults (merge screedcast-defaults opt)]
+    (binding [*wrap-at* (options-n-defaults :wrap-at)
+              *separator* (options-n-defaults :separator)]
+      (do
+        (reset! screencast-topics (mapv #(:screencast-title %) (opt :screencast-filename-bases)))
+        (reset! project-name (opt :project-name-formatted))
+        (map #(generate-screencast % options-n-defaults) (opt :screencast-filename-bases))))))

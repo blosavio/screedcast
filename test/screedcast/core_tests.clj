@@ -54,7 +54,14 @@
     [:pre [:code.form "(inc 99)"] [:br] [:code.eval ";; => 100"]]
 
     (prettyfy-form-prettyfy-eval "(def test-1 99)")
-    [:pre [:code "(def test-1 99)"]]))
+    [:pre [:code "(def test-1 99)"]]
+
+    (binding [*separator* " -->> "]
+      (prettyfy-form-prettyfy-eval "(inc 99)"))
+    [:pre [:code.form "(inc 99)"] [:br] [:code.eval ";; -->> 100"]]
+
+    (prettyfy-form-prettyfy-eval "{:a 1 :b 2 :c 3}" 12 12)
+    [:pre [:code.form "{:a 1,\n :b 2,\n :c 3}"] [:br] [:code.eval ";; => {:a 1,\n;;     :b 2,\n;;     :c 3}"]]))
 
 
 (deftest panel-tests
