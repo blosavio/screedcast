@@ -4,6 +4,10 @@
  [:dl
   [:dt#panel "panel"]
   [:dd [:p "A single frame of a screencast, written in hiccup-style " [:span.small-caps "html"] ", which may contain Clojure code examples. Screedcast uses the term " [:em "panel"] " to distinguish between a traditional " [:a {:href "#slideshow"} "slideshow"] " " [:em "slide"] "."]]]
+
+ [:dl
+  [:dt#screed "screed"]
+  [:dd [:p "A lengthy, boring piece of discourse."]]]
  
  [:dl
   [:dt#screencast "screencast"]
@@ -19,7 +23,4 @@
         "Apple " [:em "Keynote"] ", "
         "Google " [:em "Slides"] ", "
         "LibreOffice " [:em "Impress"] ", or "
-        "Microsoft " [:em "PowerPoint"] ", etc. No particular provisions for displaying evaluated Clojure code examples."]]]
-
-
-]
+        "Microsoft " [:em "PowerPoint"] ", etc. No particular provisions for displaying evaluated Clojure code examples."]]]]
