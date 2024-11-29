@@ -1,0 +1,13 @@
+{:project-formatted-name "Screedcast"
+ :copyright-holder "Brad Losavio"
+
+ :changelog-UUID #uuid "b2f4f3b9-707c-46e9-af58-8ce888b4b225"
+
+ :changelog-html-directory "doc/"
+ :changelog-html-filename "changelog.html"
+
+ :changelog-markdown-directory ""
+ :changelog-markdown-filename "changelog.md"
+
+ :changelog-entries-directory "resources/changelog_entries/"
+ :changelog-data-file "changelog.edn"}

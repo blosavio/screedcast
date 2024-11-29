@@ -1,0 +1,35 @@
+{:sections [{:section-name "Setup"}
+            {:section-name "API" :section-href "https://blosavio.github.io/speculoos/index.html" :skip-section-load? true}
+            {:section-name "Changelog" :section-href "https://github.com/blosavio/speculoos/blob/main/changelog.md" :skip-section-load? true}
+            {:section-name "Introduction" :section-href "intro"}
+            {:section-name "Usage"}
+            {:section-name "Examples" :section-href "https://blosavio.github.io/screedcast/example.html" :skip-section-load? true}
+            {:section-name "Alternatives"}
+            {:section-name "Glossary"}
+            {:section-name "Contact" :section-href "https://github.com/blosavio" :skip-section-load? true}]
+
+ :clojars-badge? true
+ :copyright-holder "Brad Losavio"
+
+ ;; special directives to zprint on how to handle these functions
+ :fn-map-additions {"all-paths" :arg1
+                    "validate-scalars" :hang
+                    "valid-scalars?" :hang
+                    "validate-collections" :hang
+                    "valid-collections?" :hang}
+
+ :project-description "A highly un-configurable library for generating coding screencasts"
+ :project-name-formatted "Screedcast"
+
+ :readme-UUID #uuid "4ba73391-1867-4667-99b9-384ada88e0ab"
+
+ :readme-html-directory "doc/"
+ :readme-html-filename "readme.html"
+
+ :readme-markdown-directory ""
+ :readme-markdown-filename "README.md"
+
+ :sections-directory "resources/readme_sections/"
+
+ :separator " => "
+ :wrap-at 80}
