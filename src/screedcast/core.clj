@@ -52,7 +52,7 @@
 
 
 (defn screencast-template
-  "Generate a screencast with header title `t`, hiccup/html dialect `body`,
+  "Creates a screencast with header title `t`, hiccup/html dialect `body`,
   UUIDv4 `uuid`, and options map `opt`."
   {:UUIDv4 #uuid "9eac9c34-c44c-4921-97f3-4418b37e15c9"
    :no-doc true}
@@ -127,7 +127,7 @@
 
 
 (defn panel
-  "Generate a screencast panel, with zero or more hiccup forms, including a
+  "Returns a screencast panel, with zero or more hiccup forms, including a
   header and a footer."
   {:UUIDv4 #uuid "1ba78b65-4568-4517-9d98-5b21fc39e0f8"}
   [& hiccups]
@@ -153,7 +153,7 @@
 
 
 (defn whats-next-panel
-  "Generate a 'What's next' panel, with the next `idx` screencast highlighted,
+  "Returns a 'What's next' panel, with the next `idx` screencast highlighted,
   optional presentation `notes` to be appended."
   {:UUIDv4 #uuid "6ab9ae17-8942-4bc4-ae4e-7c520f243929"}
   [idx & notes]
@@ -187,14 +187,13 @@
   "Given an _options_ map `opt`, generate a screencast html doc for all maps
   contained by the vector associated to `:screencast-filename-bases`.
 
-  See [project documenation](https://github.com/blosavio/screedcast) for details
+  See [project documentation](https://github.com/blosavio/screedcast) for details
   of the options map."
   {:UUIDv4 #uuid "d856e482-bf0e-4ad6-8056-095f49c84f42"}
   [opt]
   (let [options-n-defaults (merge screedcast-defaults opt)]
     (binding [*wrap-at* (options-n-defaults :wrap-at)
               *separator* (options-n-defaults :separator)]
-      (do
-        (reset! screencast-topics (mapv #(:screencast-title %) (opt :screencast-filename-bases)))
-        (reset! project-name (opt :project-name-formatted))
-        (map #(generate-screencast % options-n-defaults) (opt :screencast-filename-bases))))))
+      (reset! screencast-topics (mapv #(:screencast-title %) (opt :screencast-filename-bases)))
+      (reset! project-name (opt :project-name-formatted))
+      (map #(generate-screencast % options-n-defaults) (opt :screencast-filename-bases)))))
