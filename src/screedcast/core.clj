@@ -30,7 +30,6 @@
 (def ^{:dynamic true
        :doc *wrap-at*-docstring} *wrap-at* 80)
 
-
 (def ^{:dynamic true
        :doc *separator*-docstring} *separator* " => ")
 
@@ -197,3 +196,35 @@
       (reset! screencast-topics (mapv #(:screencast-title %) (opt :screencast-filename-bases)))
       (reset! project-name (opt :project-name-formatted))
       (map #(generate-screencast % options-n-defaults) (opt :screencast-filename-bases)))))
+
+
+;; Attempt to delay the binding until the function is called, not when it is
+;; defined.
+
+
+#_(defn with-*separator*
+    "Middle-ware to put the binding into effect when the function is invoked, not
+  when the function is being constructed."
+    {:UUIDv4 #uuid "10bd1921-de8f-4a97-9004-f03e6c603f69"
+     :no-doc true}
+    [s]
+    (fn [f x]
+      (binding [*separator* s]
+        (f x))))
+
+
+#_(defn generate-all-screencasts-2
+  "Given an _options_ map `opt`, generate a screencast html doc for all maps
+  contained by the vector associated to `:screencast-filename-bases`.
+
+  See [project documentation](https://github.com/blosavio/screedcast) for details
+  of the options map."
+  {:UUIDv4 #uuid "d856e482-bf0e-4ad6-8056-095f49c84f42"
+   :no-doc true}
+  [opt]
+  (let [options-n-defaults (merge screedcast-defaults opt)]
+    (do
+      (reset! screencast-topics (mapv #(:screencast-title %) (opt :screencast-filename-bases)))
+      (reset! project-name (opt :project-name-formatted))
+      ((with-*separator* (options-n-defaults :separator))
+       (fn [ond] (map #(generate-screencast % ond) (opt :screencast-filename-bases))) options-n-defaults))))

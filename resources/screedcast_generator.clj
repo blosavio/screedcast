@@ -11,3 +11,9 @@
 
 
 (generate-all-screencasts screedcast-options)
+
+
+#_(defn -main
+    [& args]
+    {:UUIDv4 #uuid "e3df00e2-0efd-459f-8407-53cd03d40856"}
+    (println "generated Screedcast screedcasts"))

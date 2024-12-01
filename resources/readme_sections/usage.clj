@@ -12,7 +12,7 @@
   
   [:li [:p "Write the presentation in hiccup/" [:span.small-caps "html"] ". Each episode section is formatted like this."]
 
-   [:pre [:code "[:body\n  (panel " [:em "❬hiccup content❭"] ")]"]]
+   [:pre [:code "[:body\n  (panel " [:em "❬hiccup content❭"] ")\n  ...]"]]
 
    [:p "The " [:code "panel"] " function is convenience utility automatically creates the hiccup required for a header, footer, page-numbering, etc."]
 
@@ -22,7 +22,23 @@
 
    [:p "Notice that we do not insert a " [:code "100"] ". " [:code "prettyfy-form-prettyfy-eval"] " does that for us during compilation. If, while writing the screencast, we'd like to know what the expression evaluates to, put the cursor right before the closing quotation marks and " [:code "eval-last-sexp"] "."]
 
-   [:p "See also a " [:a {:href "https://github.com/blosavio/readmoi?tab=readme-ov-file#detailed-usage"} " sibling project's usage"] " for a few more tips."]]
+   [:p "See also a " [:a {:href "https://github.com/blosavio/readmoi?tab=readme-ov-file#detailed-usage"} " sibling project's usage"] " for a few more tips."]
+
+   [:p "Screedcast also includes a trio of " [:span.small-caps "css"] " helpers."]
+
+   [:ul
+    [:li [:p [:code "[:div.vspace]"] " provides some vertical breathing room between elements."]]
+    [:li
+     [:p "This pattern provides side-by-side column content blocks."]
+     [:pre [:code
+"[:div.side-by-side-container
+  [:div.side-by-side
+    [:p \"Stuff in the left column.\"]
+    [:p \"Lorem ipsum dolor...\"]]
+  [:div.side-by-side
+    [:p \"Stuff in the right column.\"]
+    [:p \"Duis aute irure...\"]]]"]]]
+    [:li "Speaker notes may be included within a " [:code "[:div.note ...]"] ". Their visibility is toggled by clicking the copyright notice."]]]
   
   [:li
    [:p "Insert the required and optional information in the " [:a {:href "https://github.com/blosavio/screedcast/blob/main/resources/screedcast_options.edn"} [:code "screedcast_options.edn"]] " file. Feel free to copy-paste " [:a {:href "https://github.com/blosavio/screedcast/blob/main/resources/screedcast_options.edn"} "this example"] ", and edit as necessary."]
@@ -50,11 +66,8 @@
     [:li [:p [:code ":separator"] " A string representing a sequence of characters to insert between the Clojure code form and resulting evaluation. Defaults to ' => '."]]
     [:li [:p [:code ":wrap-at"] " An integer that governs the wrapping column for the " [:a {:href "https://github.com/kkinnear/zprint"} "zprint"] " pretty printer. Defaults to " [:code "80"] "."]]]]
   
-  [:li [:p "Generate the " [:span.small-caps "html"] " files. Screedcast is not fancy. Just evalulate this." ]
+  [:li [:p "Generate the " [:span.small-caps "html"] " files. Screedcast is not fancy. Just evaluate this." ]
 
    [:pre [:code "(generate-all-screencasts (load-file \"resources/screedcast_options.edn\"))"]]
 
-   [:p  "Find the " [:span.small-caps "html"] " files in the output directory, which defaults to " [:code "doc/screencast_slices/"] "."]]]
- 
-
- ]
+   [:p  "Or use a " [:a {:href "https://github.com/blosavio/screedcast/blob/main/resources/screedcast_generator.clj"} " generator script"] ". Find the " [:span.small-caps "html"] " files in the output directory, which defaults to " [:code "doc/screencast_slices/"] "."]]]]

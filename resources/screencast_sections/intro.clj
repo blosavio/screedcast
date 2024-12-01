@@ -14,9 +14,17 @@
 
   [:p "The Screedcast lib generates the visual component of a screencast, like this one."]
 
+  [:p "Note: Text size is adjusted for my screen. Adjust your browser's 'zoom' to your taste."]
+
+  [:div.vspace]
+  [:div.vspace]
+  [:div.vspace]
+  [:div.vspace]
+  [:div.vspace]
+  [:div.vspace]
   [:div.vspace]
 
-  [:p "Click/tap the footer (i.e., the region with the \"1/" [:em "N"] "\" and the web link) to go forward one panel."])
+  [:p "Click/tap the footer (i.e., the region just below with the \"1/" [:em "N"] "\" and the web link) to go forward one panel."])
 
 
  (panel
@@ -72,7 +80,7 @@
   [:div.note]
 
   [:div.note
-   [:p "Speaker look like this. Their display state can be toggled, so they won't be seen during the actual screencast."]
+   [:p "Speaker notes look like this. Their display state can be toggled, so they won't be seen during the actual screencast recording."]
    [:ul
     [:li "'foo' is great,"]
     [:li "'bar' is really good, and "]
@@ -119,7 +127,7 @@
     [:p [:strong "Addition"]]
     (prettyfy-form-prettyfy-eval "(+ 5 4)")]
    [:div.side-by-side
-    [:p [:strong "Substraction"]]
+    [:p [:strong "Subtraction"]]
     (prettyfy-form-prettyfy-eval "(- 5 4)")]]
 
   [:div.vspace]
@@ -130,7 +138,7 @@
  (whats-next-panel
   intro-index
   [:div.note
-   [:p "A 'What's Next' panel is a special panel at the end of a screencast section that let's the audience feel our current location. It shows what we just finished discussing and what will be discussed in the next section."]
+   [:p "A 'What's Next' panel is a special panel at the end of a screencast section that lets the audience feel our current location. It shows what we just finished discussing and what will be discussed in the next section."]
 
    [:p "In this case, we just finished the " [:em "Introduction"] " discussion, and will next discuss the " [:em "Usage"] ". And there's a third section after that will discuss " [:em "Creating"] "."]
 

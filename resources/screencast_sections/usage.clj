@@ -18,9 +18,9 @@
 
    [:li [:p "Some people learn/understand audio-visual better than written examples."]]
 
-   [:li [:p "The visual component of a screencast is an " [:span.small-caps "html"] " file rendered by a web-browswer."]]
+   [:li [:p "The visual component of a screencast is an " [:span.small-caps "html"] " file rendered by a web-browser."]]
 
-   [:li [:p "I suggest putting the browser into " [:em "Full Screen"] " mode and adjusting the zoom so that the text fills the middle 50% of the screen."]]]
+   [:li [:p "I suggest putting the browser into " [:em "Full Screen"] " mode and adjusting the zoom so that the text fills the middle 50% of the screen. This screencast is currently adjusted for my screen; you may have to tweak it for your own screen."]]]
 
   [:div.vspace]
   [:div.vspace]
@@ -49,14 +49,14 @@
 
   (prettyfy-form-prettyfy-eval "(map inc [1 2 3])")
 
-  [:p "Giving the impression of being at the " [:span.small-caps "repl"] " also makes the screencast a little more engaging."]
+  [:p "Giving the impression of being at the " [:span.small-caps "repl"] " also makes the screencast a little more familiar and engaging."]
 
   [:div.vspace]
 
   [:p "If a panel contains many code examples, you may want to re-hide the evaluations as you work your way through the discussion. Click/tap the expression again (not the evaluation) to re-hide."]
 
   [:div.note
-   [:p "Speaker note: " [:strong "Way"] " too much text on this panel."]])
+   [:p "Speaker note: " [:strong "Way"] " too much text on this panel. Not a good example of a screencast panel."]])
 
 
  (panel
@@ -72,7 +72,7 @@
   [:div.note
    [:p "A good way to wrap up a screencast section is to put it into context. The 'What's Next' panel tells us what we just discussed and highlights the next topic."]
    
-   [:p "This particular screencast series contains three sections. Since we just discussed " [:em "using"] " Screedcast (section #2), we'll follow that up with a discussion on how to " [:em "create"] " a screencast (section #3)."]
+   [:p "This particular screencast series contains three sections. Since we just discussed " [:em "Using"] " Screedcast (section #2), we'll follow that up with a discussion on how to " [:em "Create"] " a screencast (section #3)."]
 
    [:div.vspace]
    [:div.vspace]

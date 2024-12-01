@@ -8,14 +8,21 @@
 
 [:body
  (panel
-  (screencast-title demo-index "Creating")
+  (screencast-title create-index "Creating")
   [:h3 "How to author a Screedcast"]
 
   [:div.vspace]
   
   [:p "Pull in the requirements."]
   
-  [:pre [:code "(require '[screedcast.core :refer [panel prettfy-form-prettyfy-eval screencast-title whats-next-panel]])"]])
+  [:pre [:code "(require '[screedcast.core :refer [panel prettyfy-form-prettyfy-eval screencast-title whats-next-panel]])"]]
+
+  [:div.vspace]
+  [:div.vspace]
+  [:div.vspace]
+  [:div.vspace]
+
+  [:p "Click/tap footer to advance precisely one panel."])
 
  (panel
   [:h3 "It's just hiccup/" [:span.small-caps "html"] "..."]
@@ -40,7 +47,7 @@
   [:pre [:code "[:pre [:code \"(inc 99)\"]]"]]
 
   [:div.note
-   [:p "But Screedcast has a utility that displays code examples better."]])
+   [:p "But we'll see soon that Screedcast has a utility that displays code examples better."]])
 
  
  (panel
@@ -58,7 +65,7 @@
 
 
  (panel
-  [:h3 "Make a code demo"]
+  [:h3 "Demonstrate code"]
 
   [:pre [:code "(prettyfy-form-prettyfy-eval \"(inc 99)\")"]]
 
@@ -102,7 +109,7 @@
 
   [:div.side-by-side-container
    [:div.side-by-side
-    [:p "Stuff in the " [:strong "left colum"] "."]
+    [:p "Stuff in the " [:strong "left column"] "."]
     [:p "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."]]
    [:div.side-by-side
     [:p "Stuff in the " [:strong "right column"] "."]
@@ -112,7 +119,7 @@
   
   [:pre [:code "[:div.side-by-side-container
    [:div.side-by-side
-    [:p \"Stuff in the left colum.\"]
+    [:p \"Stuff in the left column.\"]
     [:p \"Lorem ipsum dolor...\"]]
    [:div.side-by-side
     [:p \"Stuff in the right column.\"]
