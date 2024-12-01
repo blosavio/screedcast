@@ -1,6 +1,6 @@
 {:sections [{:section-name "Setup"}
-            {:section-name "API" :section-href "https://blosavio.github.io/speculoos/index.html" :skip-section-load? true}
-            {:section-name "Changelog" :section-href "https://github.com/blosavio/speculoos/blob/main/changelog.md" :skip-section-load? true}
+            {:section-name "API" :section-href "https://blosavio.github.io/screedcast/index.html" :skip-section-load? true}
+            {:section-name "Changelog" :section-href "https://github.com/blosavio/screedcast/blob/main/changelog.md" :skip-section-load? true}
             {:section-name "Introduction" :section-href "intro"}
             {:section-name "Usage"}
             {:section-name "Examples"}
