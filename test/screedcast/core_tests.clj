@@ -1,5 +1,6 @@
 (ns screedcast.core-tests
   (:require [clojure.test :refer [deftest is are run-tests testing]]
+            [readmoi.core :refer [*separator*]]
             [screedcast.core :refer :all]))
 
 

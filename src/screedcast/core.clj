@@ -10,28 +10,7 @@
    [hiccup.element :as element]
    [hiccup.form :as form]
    [hiccup.util :as util]
-   [readmoi.core :refer :all :exlude [*separator*-docstring
-                                      *separator*
-                                      *wrap-at*-docstring
-                                      *wrap-at*]]))
-
-
-(def ^{:no-doc true} *wrap-at*-docstring
-  "Base-case column wrap, override-able by supplying extra args to the function
- that would otherwise consult this value, e.g., [[prettyfy-form-prettyfy-eval]].
- Default `80`.")
-
-
-(def ^{:no-doc true} *separator*-docstring
-  "Characters that separate the string representation of the form to be
- evaluated and the string representation of the result. Default ` => `.")
-
-
-(def ^{:dynamic true
-       :doc *wrap-at*-docstring} *wrap-at* 80)
-
-(def ^{:dynamic true
-       :doc *separator*-docstring} *separator* " => ")
+   [readmoi.core :refer :all]))
 
 
 (defn page-ize
@@ -98,10 +77,11 @@
 
   The compiled html elements are manipulated by javascript.
 
-  Re-bind [[*wrap-at*]] to change base-case column-wrap width. The two optional
+  Re-bind [`readmoi.core/*wrap-at*`](https://blosavio.github.io/readmoi/readmoi.core.html#var-*wrap-at*) to change base-case column-wrap width. The two optional
   width args, `width-fn` and `width-output`, supersede this value.
 
-  Re-bind [[*separator*]] to change the evaluation arrow.
+  Re-bind [`readmoi.core/*separator*`](https://blosavio.github.io/readmoi/readmoi.core.html#var-*separator*)
+  to change the evaluation arrow.
 
   Note: Evaluated output can not contain an anonymous function of either
   `(fn [x] ...)` nor `#(...)` because zprint requires an internal reference
@@ -196,35 +176,3 @@
       (reset! screencast-topics (mapv #(:screencast-title %) (opt :screencast-filename-bases)))
       (reset! project-name (opt :project-name-formatted))
       (map #(generate-screencast % options-n-defaults) (opt :screencast-filename-bases)))))
-
-
-;; Attempt to delay the binding until the function is called, not when it is
-;; defined.
-
-
-#_(defn with-*separator*
-    "Middle-ware to put the binding into effect when the function is invoked, not
-  when the function is being constructed."
-    {:UUIDv4 #uuid "10bd1921-de8f-4a97-9004-f03e6c603f69"
-     :no-doc true}
-    [s]
-    (fn [f x]
-      (binding [*separator* s]
-        (f x))))
-
-
-#_(defn generate-all-screencasts-2
-  "Given an _options_ map `opt`, generate a screencast html doc for all maps
-  contained by the vector associated to `:screencast-filename-bases`.
-
-  See [project documentation](https://github.com/blosavio/screedcast) for details
-  of the options map."
-  {:UUIDv4 #uuid "d856e482-bf0e-4ad6-8056-095f49c84f42"
-   :no-doc true}
-  [opt]
-  (let [options-n-defaults (merge screedcast-defaults opt)]
-    (do
-      (reset! screencast-topics (mapv #(:screencast-title %) (opt :screencast-filename-bases)))
-      (reset! project-name (opt :project-name-formatted))
-      ((with-*separator* (options-n-defaults :separator))
-       (fn [ond] (map #(generate-screencast % ond) (opt :screencast-filename-bases))) options-n-defaults))))

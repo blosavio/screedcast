@@ -1,4 +1,4 @@
-(defproject com.sagevisuals/screedcast "0-SNAPSHOT0"
+(defproject com.sagevisuals/screedcast "0-SNAPSHOT1"
   :description "A highly un-configurable library for generating coding screencasts."
   :url "https://github.com/blosavio/screedcast"
   :license {:name "MIT License"
@@ -22,5 +22,5 @@
           :doc-files []
           :source-uri "https://github.com/blosavio/screedcast/blob/main/{filepath}#L{line}"
           :html {:transforms [[:div.sidebar.primary] [:append [:ul.index-link [:li.depth-1 [:a {:href "https://github.com/blosavio/screedcast"} "Project home"]]]]]}
-          :project {:name "Screedcast" :version "version 0-SNAPSHOT0"}}
+          :project {:name "Screedcast" :version "version 0-SNAPSHOT1"}}
   :scm {:name "git" :url "https://github.com/blosavio/screedcast"})

@@ -6,5 +6,5 @@
                                           :screencast-html-directory "doc/screencast_slides/"
                                           :sections-directory "resources/screencast_sections/"
 
-                                          :separator " -->> "
+                                          :separator " => "
                                           :wrap-at 80})
