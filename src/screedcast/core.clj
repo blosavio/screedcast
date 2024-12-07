@@ -51,7 +51,7 @@
      [:p#page-footer
       (copyright (opt :copyright-holder))
       [:br]
-      (str "Compiled " (short-date) ".")
+      "Compiled by " [:a {:href "https://github.com/blosavio/screedcast"} "Screedcast"] " on " (short-date) "."
       (opt :project-license-section)
       [:span#uuid [:br] uuid]])]))
 
@@ -155,8 +155,11 @@
                          (load-file (str (opt :sections-directory) (:screencast-filename fnbe) ".clj"))
                          opt)
         screencast-body-fn-reverted (revert-fn-obj-rendering screencast-body)
-        title-replaced (clojure.string/replace screencast-body-fn-reverted #":::title replacement target:::" (opt :project-name-formatted))]
-    (spit (str (opt :screencast-html-directory) (:screencast-filename fnbe) ".html") screencast-body-fn-reverted)))
+        title-replaced (clojure.string/replace screencast-body-fn-reverted #":::title replacement target:::" (opt :project-name-formatted))
+        filepath-name (str (opt :screencast-html-directory) (:screencast-filename fnbe) ".html")]
+    (do
+      (spit filepath-name screencast-body-fn-reverted)
+      (if (opt :tidy-html?) (tidy-html-document filepath-name)))))
 
 
 (load "screedcast_defaults")

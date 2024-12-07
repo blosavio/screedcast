@@ -64,7 +64,8 @@
     [:li [:p [:code ":sections-directory"] " A string representing the directory to find the hiccup/" [:span.small-caps "html"] " files. Include the trailing '/'. Defaults to 'resources/screencast_sections/'."]]
     [:li [:p [:code ":screencast-html-directory"] " A string representing the directory to place the output files. Include the trailing '/'. Defaults to 'doc/screencast_slides/'."]]
     [:li [:p [:code ":separator"] " A string representing a sequence of characters to insert between the Clojure code form and resulting evaluation. Defaults to ' => '."]]
-    [:li [:p [:code ":wrap-at"] " An integer that governs the wrapping column for the " [:a {:href "https://github.com/kkinnear/zprint"} "zprint"] " pretty printer. Defaults to " [:code "80"] "."]]]]
+    [:li [:p [:code ":wrap-at"] " An integer that governs the wrapping column for the " [:a {:href "https://github.com/kkinnear/zprint"} "zprint"] " pretty printer. Defaults to " [:code "80"] "."]]
+    [:li [:p [:code ":tidy-html?"] " Indent and wrap " [:span.small-caps "html"] ". Defaults to " [:code "false"] "."]]]]
   
   [:li [:p "Generate the " [:span.small-caps "html"] " files. Screedcast is not fancy. Just evaluate this." ]
 
