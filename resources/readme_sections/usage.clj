@@ -65,7 +65,11 @@
     [:li [:p [:code ":screencast-html-directory"] " A string representing the directory to place the output files. Include the trailing '/'. Defaults to 'doc/screencast_slides/'."]]
     [:li [:p [:code ":separator"] " A string representing a sequence of characters to insert between the Clojure code form and resulting evaluation. Defaults to ' => '."]]
     [:li [:p [:code ":wrap-at"] " An integer that governs the wrapping column for the " [:a {:href "https://github.com/kkinnear/zprint"} "zprint"] " pretty printer. Defaults to " [:code "80"] "."]]
-    [:li [:p [:code ":tidy-html?"] " Indent and wrap " [:span.small-caps "html"] ". Defaults to " [:code "false"] "."]]]]
+    [:li [:p [:code ":tidy-html?"] " Indent and wrap " [:span.small-caps "html"] ". Defaults to " [:code "false"] "."]]
+    [:li [:p [:code ":toc?"] " A boolean that controls generating a " [:em "Table of Contents"] " page with hyperlinks to each screencast section. Defaults to " [:code "false"] "."]]
+    [:li [:p [:code ":toc-uuid"] " A UUID for the TOC webpage."]]
+    [:li [:p [:code ":toc-url-base"] " A string representing the leading portion of the url up to the slug where the screencasts are served. Include the trailing '/'. Defaults to " [:code "nil"] ". " [:em "Note:"] " this value does not point to the local file system, but intended to be somewhere like the project's GitHub resources sub-directory."]]
+    [:li [:p [:code ":toc-preamble"] " A hiccup/" [:span.small-caps "html"] " form that will be displayed above the screencast listings."]]]]
   
   [:li [:p "Generate the " [:span.small-caps "html"] " files. Screedcast is not fancy. Just evaluate this." ]
 

@@ -1,0 +1,19 @@
+{:date {:year 2024
+        :month "December"
+        :day 10}
+ :responsible {:name "Brad Losavio"
+               :email "blosavio@sagevisuals.com"}
+ :version 2
+ :comment "Added table of contents generator."
+ :project-status :active
+ :stable false
+ :urgency :medium
+ :breaking? false
+ :changes
+ [{:description "Added a function to generate a table of contents that links to all screencasts. Inludes a new entry in the options map."
+   :date {:year 2024
+          :month "December"
+          :day 10}
+   :change-type :added-functions
+   :added-functions ['generate-toc]
+   :breaking? false}]}

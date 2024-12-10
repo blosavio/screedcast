@@ -14,4 +14,8 @@
  :separator " => "
  :wrap-at 80
 
- :tidy-html? true}
+ :tidy-html? true
+ :toc? true
+ :toc-uuid #uuid "0627367f-28a7-4d8d-8995-fb9c6b2aa564"
+ :toc-url-base "https://blosavio.github.io/screedcast/screencast_slides/"
+ :toc-preamble [:p "Example preamble text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."]}

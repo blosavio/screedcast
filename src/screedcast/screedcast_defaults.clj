@@ -7,7 +7,8 @@
   * `:sections-directory`
   * `:separator`
   * `:wrap-at`
-  * `:tidy-html?`")
+  * `:tidy-html?`
+  * `:toc?`")
 
 
 (def ^{:doc screedcast-defaults-docstring}
@@ -22,4 +23,5 @@
                        :separator " => "
                        :wrap-at 80
 
-                       :tidy-html? false})
+                       :tidy-html? false
+                       :toc? false})

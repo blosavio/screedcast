@@ -77,8 +77,9 @@
 
   The compiled html elements are manipulated by javascript.
 
-  Re-bind [`readmoi.core/*wrap-at*`](https://blosavio.github.io/readmoi/readmoi.core.html#var-*wrap-at*) to change base-case column-wrap width. The two optional
-  width args, `width-fn` and `width-output`, supersede this value.
+  Re-bind [`readmoi.core/*wrap-at*`](https://blosavio.github.io/readmoi/readmoi.core.html#var-*wrap-at*)
+  to change base-case column-wrap width. The two optional width args, `width-fn`
+  and `width-output`, supersede this value.
 
   Re-bind [`readmoi.core/*separator*`](https://blosavio.github.io/readmoi/readmoi.core.html#var-*separator*)
   to change the evaluation arrow.
@@ -142,11 +143,43 @@
    notes))
 
 
+(defn generate-toc
+  "Given an _options_ map `opt`, generate a _Table of Contents_ listing of
+  screencasts hyperlinks. Hyperlink slugs are composed from the screencast
+  filenames.
+
+  Within `opt`,
+
+  * `:toc-preamble` is hiccup/html displayed above the listing
+  * `:toc-uuid` is a UUID for the TOC webpage
+  * `:toc-url-base` is the leading portion of the url up to the slug (include a
+    trailing slash '/')"
+  {:UUIDv4 #uuid "74f4e9c1-334b-4d8d-ba96-142f1f97f3b0"}
+  [opt]
+  (let [toc-body (page-template
+                  (str (opt :project-name-formatted) " — " (opt :project-description))
+                  #uuid "b41578e4-d1cb-4ea6-9cd3-1ca68f8af62d"
+                  [:body
+                   [:h1 (opt :project-name-formatted) " Screencast Table of Contents"]
+                   (opt :toc-preamble)
+                   [:ol (map #(vector :li [:a {:href (str (opt :toc-url-base)
+                                                          (% :screencast-filename)
+                                                          ".html")}
+                                           (% :screencast-title)])
+                             (opt :screencast-filename-bases))]]
+                  (opt :copyright-holder)
+                  [:a {:href "https://github.com/blosavio/screedcast"} "Screencast"])
+        toc-body-css (clojure.string/replace toc-body "project.css" "screedcast.css")
+        toc-filename (str (opt :screencast-html-directory) "table_of_contents.html")]
+    (do
+      (spit toc-filename toc-body-css)
+      (if (opt :tidy-html?) (tidy-html-document toc-filename)))))
+
+
 (defn generate-screencast
   "Given file-name base entry `fnbe` and screedcast options map `opt`, generate
   an html screencast page."
-  {:UUIDv4 #uuid "b07a9fbd-0ad1-4ae3-96a9-01937ab053e6"
-   :no-doc true}
+  {:UUIDv4 #uuid "b07a9fbd-0ad1-4ae3-96a9-01937ab053e6"}
   [fnbe opt]
   (let [title (str (opt :project-name-formatted) " — " (opt :project-description))
         screencast-body (screencast-template
@@ -159,7 +192,8 @@
         filepath-name (str (opt :screencast-html-directory) (:screencast-filename fnbe) ".html")]
     (do
       (spit filepath-name screencast-body-fn-reverted)
-      (if (opt :tidy-html?) (tidy-html-document filepath-name)))))
+      (if (opt :tidy-html?) (tidy-html-document filepath-name))
+      (if (opt :toc?) (generate-toc opt)))))
 
 
 (load "screedcast_defaults")

@@ -20,11 +20,11 @@
       <h3>
         Leiningen/Boot
       </h3>
-      <pre><code>[com.sagevisuals/screedcast &quot;1&quot;]</code></pre>
+      <pre><code>[com.sagevisuals/screedcast &quot;2-SNAPSHOT0&quot;]</code></pre>
       <h3>
         Clojure CLI/deps.edn
       </h3>
-      <pre><code>com.sagevisuals/screedcast {:mvn/version &quot;1&quot;}</code></pre>
+      <pre><code>com.sagevisuals/screedcast {:mvn/version &quot;2-SNAPSHOT0&quot;}</code></pre>
       <h3>
         Require
       </h3>
@@ -225,6 +225,29 @@
                 <code>:tidy-html?</code> Indent and wrap <span class="small-caps">html</span>. Defaults to <code>false</code>.
               </p>
             </li>
+            <li>
+              <p>
+                <code>:toc?</code> A boolean that controls generating a <em>Table of Contents</em> page with hyperlinks to each screencast section. Defaults to
+                <code>false</code>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>:toc-uuid</code> A UUID for the TOC webpage.
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>:toc-url-base</code> A string representing the leading portion of the url up to the slug where the screencasts are served. Include the
+                trailing &apos;/&apos;. Defaults to <code>nil</code>. <em>Note:</em> this value does not point to the local file system, but intended to be
+                somewhere like the project&apos;s GitHub resources sub-directory.
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>:toc-preamble</code> A hiccup/<span class="small-caps">html</span> form that will be displayed above the screencast listings.
+              </p>
+            </li>
           </ul>
         </li>
         <li>
@@ -242,7 +265,8 @@
     <section id="examples">
       <h2>
         Examples
-      </h2><a href="https://blosavio.github.io/screedcast/screencast_slides/intro.html">Introduction screencast</a><br>
+      </h2><a href="https://blosavio.github.io/screedcast/screencast_slides/table_of_contents.html">Table of Contents</a><br>
+      <a href="https://blosavio.github.io/screedcast/screencast_slides/intro.html">Introduction screencast</a><br>
       <a href="https://blosavio.github.io/screedcast/screencast_slides/usage.html">Usage screencast</a><br>
       <a href="https://blosavio.github.io/screedcast/screencast_slides/create.html">Creating screencast</a>
     </section>
@@ -337,7 +361,7 @@
     <p></p>
     <p id="page-footer">
       Copyright © 2024 Brad Losavio.<br>
-      Compiled by <a href="https://github.com/blosavio/readmoi">ReadMoi</a> on 2024 December 08.<span id="uuid"><br>
+      Compiled by <a href="https://github.com/blosavio/readmoi">ReadMoi</a> on 2024 December 10.<span id="uuid"><br>
       4ba73391-1867-4667-99b9-384ada88e0ab</span>
     </p>
   </body>
