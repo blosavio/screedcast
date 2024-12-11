@@ -51,7 +51,8 @@
      [:ul
       [:li [:p [:code ":screencast-filename"] " A string representing the filename without the " [:code ".clj"] " extension."]]
       [:li [:p [:code ":screencast-title"] " A string that will appear as the first text of the screencast title in the first panel."]]
-      [:li [:p [:code ":screencast-uuid"] " A version 4 Universally Unique Identifier."]]]]
+      [:li [:p [:code ":screencast-uuid"] " A version 4 Universally Unique Identifier."]]
+      [:li [:p [:code ":video-slug"] " A string that completes the url (i.e., the 'slug'), along with " [:code ":toc-video-url-base"] " (below), that locates the screencast's video."]]]]
     [:li [:p [:code ":project-name-formatted"] " A string containing the name of the project, appearing in the title panel."]]
     [:li [:p [:code ":project-description"] " A string describing the project, appearing in the web browser's OS window frame."]]
     [:li [:p [:code ":project-webpage-link"] " A string appearing in the footer of the screencast."]]

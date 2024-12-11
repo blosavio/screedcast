@@ -163,6 +163,12 @@
                     <code>:screencast-uuid</code> A version 4 Universally Unique Identifier.
                   </p>
                 </li>
+                <li>
+                  <p>
+                    <code>:video-slug</code> A string that completes the url (i.e., the &apos;slug&apos;), along with <code>:toc-video-url-base</code> (below),
+                    that locates the screencast&apos;s video.
+                  </p>
+                </li>
               </ul>
             </li>
             <li>
