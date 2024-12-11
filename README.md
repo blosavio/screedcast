@@ -20,11 +20,11 @@
       <h3>
         Leiningen/Boot
       </h3>
-      <pre><code>[com.sagevisuals/screedcast &quot;2-SNAPSHOT0&quot;]</code></pre>
+      <pre><code>[com.sagevisuals/screedcast &quot;2-SNAPSHOT1&quot;]</code></pre>
       <h3>
         Clojure CLI/deps.edn
       </h3>
-      <pre><code>com.sagevisuals/screedcast {:mvn/version &quot;2-SNAPSHOT0&quot;}</code></pre>
+      <pre><code>com.sagevisuals/screedcast {:mvn/version &quot;2-SNAPSHOT1&quot;}</code></pre>
       <h3>
         Require
       </h3>
@@ -233,14 +233,21 @@
             </li>
             <li>
               <p>
-                <code>:toc-uuid</code> A UUID for the TOC webpage.
+                <code>:toc-uuid</code> A UUID for the <em>Table of Contents</em> webpage.
               </p>
             </li>
             <li>
               <p>
-                <code>:toc-url-base</code> A string representing the leading portion of the url up to the slug where the screencasts are served. Include the
-                trailing &apos;/&apos;. Defaults to <code>nil</code>. <em>Note:</em> this value does not point to the local file system, but intended to be
-                somewhere like the project&apos;s GitHub resources sub-directory.
+                <code>:toc-video-url-base</code> A string that locates the screencast videos server, representing the leading portion of the url up to the
+                slug. Include the trailing &apos;/&apos;. Defaults to <code>nil</code>. <em>Note:</em> This value does not point to the local file system, but
+                the video-hosting server.
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>:toc-panel-url-base</code> A string that locates the screencast panels server, representing the leading portion of the url up to the
+                slug. Include the trailing &apos;/&apos;. Defaults to <code>nil</code>. <em>Note:</em> This value does not point to the local file system, but
+                intended to be somewhere like the project&apos;s GitHub resources sub-directory.
               </p>
             </li>
             <li>
@@ -361,7 +368,7 @@
     <p></p>
     <p id="page-footer">
       Copyright © 2024 Brad Losavio.<br>
-      Compiled by <a href="https://github.com/blosavio/readmoi">ReadMoi</a> on 2024 December 10.<span id="uuid"><br>
+      Compiled by <a href="https://github.com/blosavio/readmoi">ReadMoi</a> on 2024 December 11.<span id="uuid"><br>
       4ba73391-1867-4667-99b9-384ada88e0ab</span>
     </p>
   </body>

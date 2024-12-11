@@ -152,8 +152,10 @@
 
   * `:toc-preamble` is hiccup/html displayed above the listing
   * `:toc-uuid` is a UUID for the TOC webpage
-  * `:toc-url-base` is the leading portion of the url up to the slug (include a
-    trailing slash '/')"
+  * `:toc-panel-url-base` is the leading portion of the url up to the slug
+  (include a trailing slash '/'); address to the panels
+  * `:toc-video-url-base` is the leading portion of the url up to the slug
+  (include a trailing slash '/'); address to the video"
   {:UUIDv4 #uuid "74f4e9c1-334b-4d8d-ba96-142f1f97f3b0"}
   [opt]
   (let [toc-body (page-template
@@ -162,23 +164,25 @@
                   [:body
                    [:h1 (opt :project-name-formatted) " Screencast Table of Contents"]
                    (opt :toc-preamble)
-                   [:ol (map #(vector :li [:a {:href (str (opt :toc-url-base)
-                                                          (% :screencast-filename)
-                                                          ".html")}
-                                           (% :screencast-title)])
+                   [:ol (map #(vector :li
+                                      [:a {:href (str (opt :toc-video-url-base) (% :video-slug))} (% :screencast-title)]
+                                      " ("
+                                      [:a {:href (str (opt :toc-panel-url-base) (% :screencast-filename) ".html")} "slides"]
+                                      ")")
                              (opt :screencast-filename-bases))]]
                   (opt :copyright-holder)
-                  [:a {:href "https://github.com/blosavio/screedcast"} "Screencast"])
-        toc-body-css (clojure.string/replace toc-body "project.css" "screedcast.css")
+                  [:a {:href "https://github.com/blosavio/screedcast"} "Screedcast"])
         toc-filename (str (opt :screencast-html-directory) "table_of_contents.html")]
     (do
-      (spit toc-filename toc-body-css)
+      (spit toc-filename toc-body)
       (if (opt :tidy-html?) (tidy-html-document toc-filename)))))
 
 
 (defn generate-screencast
   "Given file-name base entry `fnbe` and screedcast options map `opt`, generate
-  an html screencast page."
+  an html screencast page. `fnbe` is a single element of an _options_ hash-map
+  containing `:screencast-filename`, `:screencast-title`, and
+  `:screencast-uuid`."
   {:UUIDv4 #uuid "b07a9fbd-0ad1-4ae3-96a9-01937ab053e6"}
   [fnbe opt]
   (let [title (str (opt :project-name-formatted) " — " (opt :project-description))
