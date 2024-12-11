@@ -12,7 +12,7 @@
     <a href="https://github.com/blosavio">Contact</a><br>
     <h1>
       Screedcast
-    </h1><em>A highly un-configurable library for generating coding screencasts</em><br>
+    </h1><em>A highly un-configurable library for generating Clojure screencasts</em><br>
     <section id="setup">
       <h2>
         Setup

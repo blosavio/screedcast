@@ -18,7 +18,7 @@
                     "validate-collections" :hang
                     "valid-collections?" :hang}
 
- :project-description "A highly un-configurable library for generating coding screencasts"
+ :project-description "A highly un-configurable library for generating Clojure screencasts"
  :project-name-formatted "Screedcast"
 
  :readme-UUID #uuid "4ba73391-1867-4667-99b9-384ada88e0ab"

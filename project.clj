@@ -1,5 +1,5 @@
 (defproject com.sagevisuals/screedcast "2-SNAPSHOT1"
-  :description "A highly un-configurable library for generating coding screencasts."
+  :description "A highly un-configurable library for generating Clojure screencasts."
   :url "https://github.com/blosavio/screedcast"
   :license {:name "MIT License"
             :url "https://opensource.org/license/mit"
